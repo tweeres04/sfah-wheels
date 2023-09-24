@@ -1,0 +1,706 @@
+Fat:
+  Europe:
+    Greece & Cyprus:
+      - olive oil
+    Scandinavia:
+      - butter
+      - neutral oil
+    Eastern Europe:
+      - butter
+      - schmaltz
+      - neutral oil
+      - olive oil
+    Germany:
+      - butter
+      - cream
+      - pork fat
+      - neutral oil
+    Spain:
+      - olive oil
+      - pork fat
+    Italy:
+      - olive oil
+      - butter
+      - lard
+    France:
+      - butter
+      - olive oil
+      - lard
+      - cream
+    United Kingdom:
+      - butter
+      - neutral oil
+      - olive oil
+  North America:
+    USA & Canada:
+      - butter
+      - olive oil
+      - bacon fat
+      - lard
+      - neutral oil
+    Mexico:
+      - neutral oil
+      - lard
+    Central America:
+      - neutral oil
+      - lard
+    Caribbean:
+      - coconut oil
+      - coconut milk
+      - neutral oil
+  South America:
+    Argentina & Uruguay:
+      - olive oil
+    Chile, Peru & Bolivia:
+      - neutral oil
+    Brazil:
+      - palm oil
+      - neutral oil
+      - olive oil
+      - lard
+  Asia:
+    China:
+      - neutral oil
+      - spring onion oil
+      - sesame oil
+    Japan:
+      - neutral oil
+      - sesame oil
+    Korea:
+      - neutral oil
+      - sesame oil
+    Thailand:
+      - coconut oil
+      - lard
+      - neutral oil
+      - palm oil
+    Vietnam:
+      - neutral oil
+    India:
+      - clarified butter
+      - grapeseed oil
+      - coconut oil
+    Iran:
+      - neutral oil
+      - clarified butter
+    Mediterranean:
+      - olive oil
+  Africa:
+    West Africa:
+      - palm oil
+      - coconut oil
+      - shea butter
+      - peanut oil
+      - watermelon seed oil
+    North Africa:
+      - olive oil
+      - smen (fermented butter)
+    Horn of Africa:
+      - neutral oil
+      - sesame oil
+      - smen
+Acid:
+  Europe:
+    Greece & Cyprus:
+      Cooking:
+        - beer
+        - wine
+        - vinegar
+        - lemon
+      Finishing:
+        - tomato
+        - olive
+        - yogurt
+        - feta cheese
+        - halloumi
+    Scandinavia:
+      Cooking:
+        - beer
+        - wine
+        - vinegar
+      Finishing:
+        - pickles
+        - pickled herring
+        - pickled capers
+        - skyr
+        - havarti
+        - danish blue cheese
+        - berries
+    Eastern Europe:
+      Cooking:
+        - wine
+        - beer
+        - cider vinegar
+        - wine vinegar
+      Finishing:
+        - sour cream
+        - sour cabbage
+        - yogurt and quark
+        - pickles
+        - brined cheese
+    Germany:
+      Cooking:
+        - wine
+        - wine vinegar
+        - cider
+        - cider vinegar
+        - beer
+      Finishing:
+        - sour cream
+        - sauerkraut
+        - mustard
+        - pumpernickel bread
+        - pickles
+    Spain:
+      Cooking:
+        - wine
+        - sherry
+        - wine & sherry vinegars
+        - lemon
+      Finishing:
+        - olives
+        - romanesco sauce
+        - chorizo
+        - fresh goat cheese
+        - manchego
+    Italy:
+      Cooking:
+        - wine
+        - wine vinegar
+        - lemon
+      Finishing:
+        - balsamic vinegar
+        - tomato
+        - olives
+        - parmesan
+        - pecorino
+        - bufala mozzarella
+    France:
+      Cooking:
+        - wine
+        - wine vinegar
+        - cider
+        - lemon
+        - verjus
+      Finishing:
+        - dijon mustard
+        - créme fraîche
+        - olives
+        - cornichons
+        - sourdough bread
+        - tomato
+        - goat cheese
+        - gruyère
+        - roquefort
+    United Kingdom:
+      Cooking:
+        - malt vinegar
+        - beer
+        - cider
+        - wine
+        - fruit wine
+      Finishing:
+        - cheddar and stilton
+        - mustard
+        - ketchup
+        - tartar sauce
+        - mint sauce
+        - buttermilk
+        - salad cream
+        - brown sauce
+        - horseradish sauce
+  North America:
+    USA & Canada:
+      Cooking:
+        - cider vinegar
+        - white vinegar
+        - beer
+        - wine
+        - wine vinegar
+      Finishing:
+        - tomato
+        - mustard
+        - buttermilk
+        - pickles
+        - hot sauce
+        - bacon and ham
+        - cheddar and cream cheese
+    Mexico:
+      Cooking:
+        - lime
+        - sour orange
+        - white vinegar
+        - beer
+      Finishing:
+        - tomato
+        - fresh cheeses
+        - salsa
+        - sour cream
+        - olives
+        - pickles
+        - chorizo
+        - mole
+        - chocolate
+        - dulce de leche
+    Central America:
+      Cooking:
+        - lime
+        - orange
+        - white vinegar
+        - beer
+      Finishing:
+        - curtido (fermented cabbage)
+        - ají pepper sauce
+        - fresh cheese
+        - tamarind
+        - tomato
+    Caribbean:
+      Cooking:
+        - lemon
+        - lime
+        - orange
+        - cider vinegar
+      Finishing:
+        - chimichurri
+        - tomato
+        - manchego and provolone
+        - dried fruit
+        - pickled eggplant
+  South America:
+    Argentina & Uruguay:
+      Cooking:
+        - lemon
+        - wine
+        - wine vinegar
+        - beer
+      Finishing:
+        - chimichurri
+        - tomato
+        - manchego and provolone
+        - dried fruit
+        - pickled eggplant
+    Chile, Peru & Bolivia:
+      Cooking:
+        - lime
+        - orange
+      Finishing:
+        - ajì pepper sauce
+        - tomato
+    Brazil:
+      Cooking:
+        - lemon
+        - vinegar
+        - orange
+      Finishing:
+        - requeijão (cream cheese)
+        - tomato
+        - pineapple
+        - passionfruit
+        - piri piri hot sauce
+  Asia:
+    China:
+      Cooking:
+        - rice wine
+        - black vinegar
+        - vinegar
+        - moutai liquor
+      Finishing:
+        - pickled vegetables
+        - soy sauce
+        - plum sauce
+        - fermented bean paste
+        - oyster sauce
+    Japan:
+      Cooking:
+        - rice wine vinegar
+        - rice wine
+      Finishing:
+        - soy sauce
+        - tamari
+        - miso
+        - pickles
+        - ponzu
+    Korea:
+      Cooking:
+        - rice wine vinegar
+        - rice wine
+        - beer
+      Finishing:
+        - kimchee
+        - gochu jang (pepper paste)
+        - soy sauce
+        - fermented bean paste
+    Thailand:
+      Cooking:
+        - lime juice
+        - rice wine vinegar
+        - rice wine
+        - beer
+      Finishing:
+        - fish sauce
+        - sriracha
+        - sambal
+        - curry paste
+        - pickles
+    Vietnam:
+      Cooking:
+        - lime
+        - rice wine vinegar
+        - rice wine
+        - beer
+      Finishing:
+        - fish sauce
+        - hoisin sauce
+        - pickled shallots
+    India:
+      Cooking:
+        - lime
+        - beer
+      Finishing:
+        - mixed pickles
+        - yogurt
+        - paneer
+        - chutneys
+        - buttermilk
+        - fermented rice cake
+        - tamarind
+    Iran:
+      Cooking:
+        - lemon
+        - lime
+        - vinegar
+      Finishing:
+        - yogurt
+        - pickles
+        - dried fruit
+        - barberries
+        - sumac
+        - pomegranates
+    Mediterranean:
+      Cooking:
+        - date vinegar
+        - lemon
+        - lime
+        - wine
+        - beer
+      Finishing:
+        - yogurt
+        - labneh
+        - feta cheese
+        - pepper sauce
+        - pomegranates
+        - pickles
+        - sumac
+  Africa:
+    West Africa:
+      Cooking:
+        - honey
+        - wine
+        - beer
+        - palm wine
+      Finishing:
+        - tomato
+        - sumbala (fermented locust bean)
+    North Africa:
+      Cooking:
+        - lemon
+        - lime
+        - date vinegar
+      Finishing:
+        - preserved lemon
+        - dried fruit
+        - sumac
+        - charmoula
+        - harissa
+        - tomato
+        - olives
+        - pickles
+    Horn of Africa:
+      Cooking:
+        - tej (honey wine)
+        - beer
+        - wine
+      Finishing:
+        - injera and canjero
+        - hot sauce
+        - tomato
+        - mango
+        - guava
+        - grapefruit
+        - cottage cheese
+Flavour:
+  Europe:
+    Greece & Cyprus:
+      - mint
+      - dill
+      - parsley
+      - oregano
+      - basil
+    Scandinavia:
+      - cardamom
+      - cinnamon
+      - dill
+      - ginger
+      - juniper berries
+      - nutmeg
+      - bay leaf
+      - allspice
+      - mustard
+      - saffron
+    Eastern Europe:
+      - allspice
+      - caraway seeds
+      - cinnamon
+      - cloves
+      - dill
+      - ginger
+      - juniper
+      - paprika
+      - black pepper
+      - savory
+    Germany:
+      - allspice
+      - anise
+      - bay leaf
+      - caraway
+      - chives
+      - cinnamon
+      - dill seed
+      - dill weed
+      - ginger
+      - juniper
+      - horseradish
+      - paprika
+      - parsley
+      - white pepper
+      - black pepper
+      - celery seed
+    Spain:
+      - saffron
+      - thyme
+      - parsley
+      - sweet & smoky paprika
+      - bay leaf
+      - chillies
+      - coriander
+      - lavender
+      - terragon
+      - basil
+    Italy:
+      - basil
+      - fennel seeds
+      - fennel fronds
+      - black pepper
+      - rosemary
+      - sage
+      - chillies
+      - oregano
+      - saffron
+    France:
+      - parsley
+      - terragon
+      - thyme
+      - basil
+      - fennel seeds
+      - lavender
+      - rosemary
+      - sage
+      - bay
+      - chervil
+      - herbes de provence
+      - quatr'epices
+    United Kingdom:
+      - parsley
+      - celery
+      - mint
+      - dill
+      - curry powder
+      - cardamom
+      - ginger
+      - cinnamon
+      - nutmeg
+  North America:
+    USA & Canada:
+      - mustard
+      - paprika
+      - black pepper
+      - cayenne
+      - chillies
+      - parsley
+      - celery
+      - dill
+      - mint
+      - cinnamon
+      - nutmeg
+    Mexico:
+      - fresh chillies
+      - dried chillies
+      - coriander
+      - cumin
+      - cinnamon
+      - epazote
+      - oregano
+      - clove
+      - allspice
+      - thyme
+    Central America:
+      - chillies
+      - epazote
+      - coriander
+      - mustard
+      - turmeric
+    Caribbean:
+      - allspice
+      - hot peppers
+      - callaloo
+      - ginger
+      - hibiscus
+      - oregano
+      - cumin
+      - basil
+      - bay leaves
+      - paprika
+      - saffron
+      - curry powder
+      - jerk spices
+  South America:
+    Argentina & Uruguay:
+      - parsley
+      - oregano
+      - chillies
+      - paprika
+    Chile, Peru & Bolivia:
+      - peruvian black mint
+      - mint-marigold
+      - ají pepper
+      - basil
+      - parsley
+      - coriander
+      - chillies
+    Brazil:
+      - cardamom
+      - chillies
+      - coriander
+      - cloves
+      - ginger
+      - nutmeg
+      - parsley
+      - black pepper
+      - saffron
+      - thyme
+  Asia:
+    China:
+      - chillies
+      - garlic
+      - ginger
+      - szechuan peppercorn
+      - star anise
+      - black pepper
+      - sesame seeds
+      - five spice
+    Japan:
+      - chillies
+      - ginger
+      - wasabi
+      - shiso
+      - shitake mushrooms
+      - yuzo
+      - kombu
+      - mustard powder
+      - nori
+      - shichimi togarashi
+    Korea:
+      - chillies
+      - garlic
+      - sesame seeds
+      - ginger
+      - perilla
+    Thailand:
+      - thai basil
+      - chillies
+      - coriander
+      - cumin
+      - curry paste
+      - ginger
+      - lemongrass
+      - mint
+      - turmeric
+      - kaffir lime
+      - galangal
+    Vietnam:
+      - thai basil
+      - chillies
+      - coriander
+      - ginger
+      - lemongrass
+      - mint
+      - spring onions
+      - star anise
+      - perilla
+      - rau rām
+    India:
+      - chillies
+      - coriander
+      - turmeric
+      - cumin
+      - ginger
+      - curry
+      - garam masala
+      - panch phoran
+      - anise
+      - cardamom
+      - cinnamon
+      - cloves
+      - curries
+      - mint
+      - black pepper
+      - saffron
+      - mustard
+    Iran:
+      - saffron
+      - cumin
+      - cardamom
+      - rosemary
+      - dill
+      - mint
+      - basil
+      - parsley
+      - coriander
+      - tarragon
+      - dried lime
+      - orange flower water
+      - advieh
+    Mediterranean:
+      - sumac
+      - oregano
+      - thyme
+      - cumin
+      - marjoram
+      - dried mint
+      - black pepper
+      - fennel
+      - za'atar
+      - baharat
+      - parsley
+  Africa:
+    West Africa:
+      - nutmeg
+      - ginger
+      - curry
+      - adobo
+      - peanuts
+    North Africa:
+      - saffron
+      - harissa
+      - cinnamon
+      - mint
+      - cumin
+      - sumac
+      - parsley
+      - coriander
+      - la kama
+      - dukah
+      - ras el hanout
+    Horn of Africa:
+      - berbere spices
+      - mitmita
