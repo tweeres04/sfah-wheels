@@ -67,13 +67,7 @@ export default function Search({ data }) {
 	}, [flatData, search])
 
 	const sortedVisibleData = useMemo(
-		() =>
-			sortBy(visibleData, [
-				'foodItem',
-				'category',
-				'country',
-				'continent',
-			]),
+		() => sortBy(visibleData, ['foodItem', 'category', 'country']),
 		[visibleData]
 	)
 	return (
@@ -103,7 +97,6 @@ export default function Search({ data }) {
 						<TableHead>Food Item</TableHead>
 						<TableHead>Category</TableHead>
 						<TableHead>Region</TableHead>
-						<TableHead>Continent</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
@@ -115,7 +108,6 @@ export default function Search({ data }) {
 								<TableCell>{capitalize(foodItem)}</TableCell>
 								<TableCell>{category}</TableCell>
 								<TableCell>{country}</TableCell>
-								<TableCell>{continent}</TableCell>
 							</TableRow>
 						)
 					)}
