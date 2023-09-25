@@ -14,7 +14,7 @@ export default async function Home() {
 	return (
 		<div className="container p-2 grid gap-3">
 			<h1 className="text-2xl">
-				<a href="https://www.saltfatacidheat.com/">SFAH</a> wheels
+				<a href="https://www.saltfatacidheat.com/">SFAH</a> Wheels
 			</h1>
 			<SfahWheels data={data} />
 		</div>
