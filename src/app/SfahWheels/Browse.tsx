@@ -8,7 +8,7 @@ import { capitalize, sortBy } from 'lodash'
 export default function Browse({ data }) {
 	const indentClass = 'ml-10'
 	return (
-		<>
+		<div className="text-xl">
 			{sortBy(Object.keys(data)).map((category) => (
 				<Collapsible key={category}>
 					<CollapsibleTrigger>{category}</CollapsibleTrigger>
@@ -112,6 +112,6 @@ export default function Browse({ data }) {
 					</CollapsibleContent>
 				</Collapsible>
 			))}
-		</>
+		</div>
 	)
 }
