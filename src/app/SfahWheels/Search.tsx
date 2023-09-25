@@ -5,6 +5,7 @@ import { sortBy, capitalize } from 'lodash'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
 import {
 	Table,
 	TableBody,
@@ -105,7 +106,20 @@ export default function Search({ data }) {
 							<TableRow
 								key={`${category}${continent}${country}${foodItem}`}
 							>
-								<TableCell>{capitalize(foodItem)}</TableCell>
+								<TableCell>
+									<Button
+										asChild
+										className="h-auto px-2 py-0"
+										variant="ghost"
+									>
+										<a
+											href={`https://google.com/search?q=${foodItem}`}
+											target="_blank"
+										>
+											{capitalize(foodItem)}{' '}
+										</a>
+									</Button>
+								</TableCell>
 								<TableCell>{category}</TableCell>
 								<TableCell>{country}</TableCell>
 							</TableRow>

@@ -4,14 +4,54 @@ import {
 	CollapsibleTrigger,
 } from '@radix-ui/react-collapsible'
 import { capitalize, sortBy } from 'lodash'
+import { Button } from '@/components/ui/button'
+
+function ChevronIcon() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 20 20"
+			fill="currentColor"
+			className="w-4 h-4"
+		>
+			<path
+				fill-rule="evenodd"
+				d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+				clip-rule="evenodd"
+			/>
+		</svg>
+	)
+}
+
+function BrowseButton(props) {
+	return (
+		<Button
+			{...props}
+			variant="ghost"
+			className="font-normal h-auto text-base py-0 px-2"
+		></Button>
+	)
+}
+
+function BrowseCollapsibleTrigger({ children, ...props }) {
+	return (
+		<CollapsibleTrigger className="flex w-100" asChild {...props}>
+			<BrowseButton>
+				{children} <ChevronIcon />
+			</BrowseButton>
+		</CollapsibleTrigger>
+	)
+}
 
 export default function Browse({ data }) {
-	const indentClass = 'ml-10'
+	const indentClass = 'ml-8'
 	return (
-		<div className="text-xl">
+		<div>
 			{sortBy(Object.keys(data)).map((category) => (
 				<Collapsible key={category}>
-					<CollapsibleTrigger>{category}</CollapsibleTrigger>
+					<BrowseCollapsibleTrigger>
+						{category}
+					</BrowseCollapsibleTrigger>
 					<CollapsibleContent>
 						{sortBy(Object.keys(data[category])).map(
 							(continent) => (
@@ -19,9 +59,9 @@ export default function Browse({ data }) {
 									className={indentClass}
 									key={`${category}${continent}`}
 								>
-									<CollapsibleTrigger>
+									<BrowseCollapsibleTrigger>
 										{continent}
-									</CollapsibleTrigger>
+									</BrowseCollapsibleTrigger>
 									<CollapsibleContent>
 										{sortBy(
 											Object.keys(
@@ -32,9 +72,9 @@ export default function Browse({ data }) {
 												className={indentClass}
 												key={`${category}${continent}${country}`}
 											>
-												<CollapsibleTrigger>
+												<BrowseCollapsibleTrigger>
 													{country}
-												</CollapsibleTrigger>
+												</BrowseCollapsibleTrigger>
 												<CollapsibleContent>
 													{category === 'Acid'
 														? sortBy(
@@ -52,12 +92,12 @@ export default function Browse({ data }) {
 																		indentClass
 																	}
 																>
-																	<CollapsibleTrigger>
+																	<BrowseCollapsibleTrigger>
 																		{
 																			acidType
 																		}{' '}
-																		Acid
-																	</CollapsibleTrigger>
+																		Acid{' '}
+																	</BrowseCollapsibleTrigger>
 																	<CollapsibleContent>
 																		{data[
 																			category
@@ -77,9 +117,18 @@ export default function Browse({ data }) {
 																					}
 																					key={`${category}${continent}${country}${foodItem}`}
 																				>
-																					{capitalize(
-																						foodItem
-																					)}
+																					<BrowseButton
+																						asChild
+																					>
+																						<a
+																							href={`https://google.com/search?q=${foodItem}`}
+																							target="_blank"
+																						>
+																							{capitalize(
+																								foodItem
+																							)}
+																						</a>
+																					</BrowseButton>
 																				</div>
 																			)
 																		)}
@@ -96,9 +145,18 @@ export default function Browse({ data }) {
 																		}
 																		key={`${category}${continent}${country}${foodItem}`}
 																	>
-																		{capitalize(
-																			foodItem
-																		)}
+																		<BrowseButton
+																			asChild
+																		>
+																			<a
+																				href={`https://google.com/search?q=${foodItem}`}
+																				target="_blank"
+																			>
+																				{capitalize(
+																					foodItem
+																				)}
+																			</a>
+																		</BrowseButton>
 																	</div>
 																)
 														  )}
