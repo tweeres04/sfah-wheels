@@ -28,7 +28,7 @@ function BrowseButton(props) {
 		<Button
 			{...props}
 			variant="ghost"
-			className="font-normal h-auto text-base py-0 px-2"
+			className="font-normal h-auto text-xl py-0 px-2"
 		></Button>
 	)
 }
