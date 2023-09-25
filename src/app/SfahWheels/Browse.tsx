@@ -3,27 +3,31 @@ import {
 	CollapsibleContent,
 	CollapsibleTrigger,
 } from '@radix-ui/react-collapsible'
-import { capitalize } from 'lodash'
+import { capitalize, sortBy } from 'lodash'
 
 export default function Browse({ data }) {
 	const indentClass = 'ml-10'
 	return (
 		<>
-			{Object.keys(data).map((category) => (
+			{sortBy(Object.keys(data)).map((category) => (
 				<Collapsible key={category}>
 					<CollapsibleTrigger>{category}</CollapsibleTrigger>
 					<CollapsibleContent>
-						{Object.keys(data[category]).map((continent) => (
-							<Collapsible
-								className={indentClass}
-								key={`${category}${continent}`}
-							>
-								<CollapsibleTrigger>
-									{continent}
-								</CollapsibleTrigger>
-								<CollapsibleContent>
-									{Object.keys(data[category][continent]).map(
-										(country) => (
+						{sortBy(Object.keys(data[category])).map(
+							(continent) => (
+								<Collapsible
+									className={indentClass}
+									key={`${category}${continent}`}
+								>
+									<CollapsibleTrigger>
+										{continent}
+									</CollapsibleTrigger>
+									<CollapsibleContent>
+										{sortBy(
+											Object.keys(
+												data[category][continent]
+											)
+										).map((country) => (
 											<Collapsible
 												className={indentClass}
 												key={`${category}${continent}${country}`}
@@ -33,10 +37,14 @@ export default function Browse({ data }) {
 												</CollapsibleTrigger>
 												<CollapsibleContent>
 													{category === 'Acid'
-														? Object.keys(
-																data[category][
-																	continent
-																][country]
+														? sortBy(
+																Object.keys(
+																	data[
+																		category
+																	][
+																		continent
+																	][country]
+																)
 														  ).map((acidType) => (
 																<Collapsible
 																	key={`${category}${continent}${country}${acidType}`}
@@ -96,11 +104,11 @@ export default function Browse({ data }) {
 														  )}
 												</CollapsibleContent>
 											</Collapsible>
-										)
-									)}
-								</CollapsibleContent>
-							</Collapsible>
-						))}
+										))}
+									</CollapsibleContent>
+								</Collapsible>
+							)
+						)}
 					</CollapsibleContent>
 				</Collapsible>
 			))}

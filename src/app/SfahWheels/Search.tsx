@@ -69,10 +69,10 @@ export default function Search({ data }) {
 	const sortedVisibleData = useMemo(
 		() =>
 			sortBy(visibleData, [
+				'foodItem',
+				'category',
 				'country',
 				'continent',
-				'category',
-				'foodItem',
 			]),
 		[visibleData]
 	)
@@ -96,26 +96,26 @@ export default function Search({ data }) {
 					>
 						Salt Fat Acid Heat
 					</a>
-					's world wheels
+					&apos;s world wheels
 				</TableCaption>
 				<TableHeader>
 					<TableRow>
 						<TableHead>Food Item</TableHead>
-						<TableHead>Country</TableHead>
-						<TableHead>Continent</TableHead>
 						<TableHead>Category</TableHead>
+						<TableHead>Region</TableHead>
+						<TableHead>Continent</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
 					{sortedVisibleData.map(
-						({ category, continent, country, type, foodItem }) => (
+						({ category, continent, country, foodItem }) => (
 							<TableRow
 								key={`${category}${continent}${country}${foodItem}`}
 							>
 								<TableCell>{capitalize(foodItem)}</TableCell>
+								<TableCell>{category}</TableCell>
 								<TableCell>{country}</TableCell>
 								<TableCell>{continent}</TableCell>
-								<TableCell>{category}</TableCell>
 							</TableRow>
 						)
 					)}
