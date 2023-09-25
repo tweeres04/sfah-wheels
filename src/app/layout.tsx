@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 const title = 'SFAH Wheels'
 const description = 'Digitized wheels from Salt Fat Acid Heat'
+const url = 'https://sfah-wheels.tweeres.ca'
 
 export const metadata: Metadata = {
 	title,
@@ -14,10 +15,13 @@ export const metadata: Metadata = {
 	robots: {
 		index: false,
 	},
+	alternates: {
+		canonical: url,
+	},
 	openGraph: {
 		title,
 		description,
-		url: 'https://sfah-wheels.tweeres.ca',
+		url,
 		siteName: title,
 		locale: 'en_US',
 		type: 'website',
