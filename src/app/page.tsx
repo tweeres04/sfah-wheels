@@ -3,6 +3,7 @@ import { join } from 'node:path'
 import yaml from 'js-yaml'
 
 import SfahWheels from './SfahWheels'
+import { Button } from '@/components/ui/button'
 
 export default async function Home() {
 	const fileData = await readFile(
@@ -16,6 +17,16 @@ export default async function Home() {
 			<h1 className="text-2xl">
 				<a href="https://www.saltfatacidheat.com/">SFAH</a> Wheels
 			</h1>
+			<p className="text-xs">
+				All information here is from the amazing book{' '}
+				<Button asChild variant="link" className="p-0 h-auto text-xs">
+					<a href="https://www.saltfatacidheat.com/" target="_blank">
+						Salt Fat Acid Heat
+					</a>
+				</Button>
+				, which I highly recommend to anyone who wants to improve at
+				cooking.
+			</p>
 			<SfahWheels data={data} />
 		</div>
 	)
