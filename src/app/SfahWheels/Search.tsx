@@ -83,12 +83,25 @@ export default function Search({ data }: Props) {
 		<>
 			<div>
 				<Label htmlFor="search">Search</Label>
-				<Input
-					id="search"
-					onChange={(event) => {
-						setSearch(event.target.value)
-					}}
-				/>
+				<div className="flex gap-1">
+					<Input
+						id="search"
+						onChange={(event) => {
+							setSearch(event.target.value)
+						}}
+						className="flex-grow"
+						value={search}
+					/>{' '}
+					<Button
+						variant="outline"
+						onClick={() => {
+							setSearch('')
+						}}
+						disabled={search.length === 0}
+					>
+						Clear
+					</Button>
+				</div>
 			</div>
 			<Table className={search === '' ? 'hidden' : undefined}>
 				<TableCaption>
