@@ -69,7 +69,7 @@ export default function WhatGoesWith({
 						</p>
 					</SheetDescription>
 				</SheetHeader>
-				<h2>Countries and their ingredients that include {foodItem}</h2>
+				<h2>Countries that include {foodItem} in their cuisine</h2>
 				<div>
 					{countries.map((c) => (
 						<Collapsible key={`${foodItem}${c}`}>
