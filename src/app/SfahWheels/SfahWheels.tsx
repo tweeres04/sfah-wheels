@@ -8,6 +8,8 @@ import Search from './Search'
 import Browse from './Browse'
 import WhatGoesWith from './WhatGoesWith'
 
+import mixpanel from 'mixpanel-browser'
+
 function useDismissedAlert() {
 	const localStorageKey = 'dismissed-what-goes-with-alert'
 	const dismissedAlertFromLocalStorage =
@@ -27,11 +29,35 @@ function useDismissedAlert() {
 	return { dismissedAlert, dismissAlert }
 }
 
-export default function SfahTable({ data }) {
-	const { dismissAlert, dismissedAlert } = useDismissedAlert()
-	const [whatGoesWithItem, setWhatGoesWithItem] = useState<string | null>(
+function useMixpanel() {
+	mixpanel.init(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN, {
+		debug: process.env.NODE_ENV !== 'production',
+		track_pageview: true,
+		persistence: 'localStorage',
+	})
+}
+
+function useWhatGoesWithItem() {
+	const [whatGoesWithItem, baseSetWhatGoesWithItem] = useState<string | null>(
 		null
 	)
+
+	function setWhatGoesWithItem(foodItem: string | null) {
+		if (foodItem) {
+			mixpanel.track('Open What Goes With', {
+				'Food Item': foodItem,
+			})
+		}
+		baseSetWhatGoesWithItem(foodItem)
+	}
+
+	return { whatGoesWithItem, setWhatGoesWithItem }
+}
+
+export default function SfahTable({ data }) {
+	useMixpanel()
+	const { dismissAlert, dismissedAlert } = useDismissedAlert()
+	const { setWhatGoesWithItem, whatGoesWithItem } = useWhatGoesWithItem()
 
 	const flatData = useMemo(
 		() =>

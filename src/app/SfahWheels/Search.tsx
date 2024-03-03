@@ -1,7 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { capitalize, sortBy } from 'lodash'
+import { capitalize, sortBy, debounce } from 'lodash'
+import mixpanel from 'mixpanel-browser'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -18,14 +19,30 @@ import {
 
 import { FoodRecord } from './types'
 
+const logSearchToMixpanel = debounce((query) => {
+	mixpanel.track('Search', {
+		Query: query,
+	})
+}, 1000)
+
+function useSearch() {
+	const [search, baseSetSearch] = useState('')
+
+	function setSearch(newValue: string) {
+		logSearchToMixpanel(newValue)
+		baseSetSearch(newValue)
+	}
+
+	return { search, setSearch }
+}
+
 type Props = {
 	flatData: FoodRecord[]
 	setWhatGoesWithItem: (foodItem: string | null) => void
 }
 
 export default function Search({ flatData, setWhatGoesWithItem }: Props) {
-	const [search, setSearch] = useState('')
-
+	const { search, setSearch } = useSearch()
 	const visibleData = useMemo(() => {
 		const searchTerms = search.split(' ')
 		return flatData.filter(({ category, continent, country, foodItem }) =>
@@ -61,6 +78,7 @@ export default function Search({ flatData, setWhatGoesWithItem }: Props) {
 					<Button
 						variant="outline"
 						onClick={() => {
+							mixpanel.track('Clear Search')
 							setSearch('')
 						}}
 						disabled={search.length === 0}

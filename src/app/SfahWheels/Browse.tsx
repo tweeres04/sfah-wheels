@@ -4,6 +4,7 @@ import {
 	CollapsibleTrigger,
 } from '@radix-ui/react-collapsible'
 import { capitalize, sortBy } from 'lodash'
+import mixpanel from 'mixpanel-browser'
 import { Button } from '@/components/ui/button'
 import { Data } from './types'
 
@@ -37,7 +38,13 @@ export function BrowseButton(props) {
 export function BrowseCollapsibleTrigger({ children, ...props }) {
 	return (
 		<CollapsibleTrigger className="flex w-100" asChild {...props}>
-			<BrowseButton>
+			<BrowseButton
+				onClick={() => {
+					mixpanel.track('Click Browse Item', {
+						Item: children,
+					})
+				}}
+			>
 				{children} <ChevronIcon />
 			</BrowseButton>
 		</CollapsibleTrigger>
