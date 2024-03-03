@@ -95,7 +95,7 @@ export default function Search({ flatData, setWhatGoesWithItem }: Props) {
 							>
 								<TableCell>
 									<Button
-										className="h-auto px-2 py-0"
+										className="h-auto px-2 py-0 text-left"
 										variant="ghost"
 										onClick={() => {
 											setWhatGoesWithItem(foodItem)
