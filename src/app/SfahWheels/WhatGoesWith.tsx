@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { capitalize } from 'lodash'
+import { capitalize, orderBy } from 'lodash'
 import { Button } from '@/components/ui/button'
 
 import { Collapsible, CollapsibleContent } from '@radix-ui/react-collapsible'
@@ -31,16 +31,19 @@ export default function WhatGoesWith({
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
 	const indentClass = 'ml-5 sm:ml-8'
 	const capitalizedFoodItem = capitalize(foodItem ?? '')
-	const countries = Array.from(
-		new Set(
-			allFoodRecords
-				.filter((foodRecord) => foodRecord.foodItem === foodItem)
-				.map((foodRecord) => foodRecord.country)
+	const countries = orderBy(
+		Array.from(
+			new Set(
+				allFoodRecords
+					.filter((foodRecord) => foodRecord.foodItem === foodItem)
+					.map((foodRecord) => foodRecord.country)
+			)
 		)
-	)
+	).sort()
 	const categories = Array.from(
 		new Set(allFoodRecords.map((fr) => fr.category))
-	)
+	).sort()
+	allFoodRecords = orderBy(allFoodRecords, 'foodItem')
 	return (
 		<Sheet open={!!foodItem} onOpenChange={() => setWhatGoesWithItem(null)}>
 			<SheetContent
@@ -69,7 +72,7 @@ export default function WhatGoesWith({
 				<h2>Countries and their ingredients that include {foodItem}</h2>
 				<div>
 					{countries.map((c) => (
-						<Collapsible key={c}>
+						<Collapsible key={`${foodItem}${c}`}>
 							<BrowseCollapsibleTrigger>
 								{c}
 							</BrowseCollapsibleTrigger>
@@ -78,7 +81,7 @@ export default function WhatGoesWith({
 									<li className={indentClass}>
 										{categories.map((category) => (
 											<Collapsible
-												key={category}
+												key={`${foodItem}${category}`}
 												defaultOpen={true}
 											>
 												<BrowseCollapsibleTrigger>
