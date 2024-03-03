@@ -16,49 +16,15 @@ import {
 	TableRow,
 } from '@/components/ui/table'
 
-import { Data } from './types'
-import WhatGoesWith from './WhatGoesWith'
+import { FoodRecord } from './types'
 
 type Props = {
-	data: Data
+	flatData: FoodRecord[]
+	setWhatGoesWithItem: (foodItem: string | null) => void
 }
 
-export default function Search({ data }: Props) {
+export default function Search({ flatData, setWhatGoesWithItem }: Props) {
 	const [search, setSearch] = useState('')
-	const [whatGoesWithItem, setWhatGoesWithItem] = useState(null)
-
-	const flatData = useMemo(
-		() =>
-			Object.keys(data).flatMap((category) =>
-				Object.keys(data[category]).flatMap((continent) =>
-					Object.keys(data[category][continent]).flatMap((country) =>
-						category === 'Acid'
-							? Object.keys(
-									data[category][continent][country]
-							  ).flatMap((type) =>
-									data[category][continent][country][
-										type
-									].flatMap((foodItem) => ({
-										category: `${type} Acid`,
-										continent,
-										country,
-										type,
-										foodItem,
-									}))
-							  )
-							: data[category][continent][country].flatMap(
-									(foodItem) => ({
-										category,
-										continent,
-										country,
-										foodItem,
-									})
-							  )
-					)
-				)
-			),
-		[data]
-	)
 
 	const visibleData = useMemo(() => {
 		const searchTerms = search.split(' ')
@@ -145,11 +111,6 @@ export default function Search({ data }: Props) {
 					)}
 				</TableBody>
 			</Table>
-			<WhatGoesWith
-				foodItem={whatGoesWithItem}
-				allFoodRecords={flatData}
-				setWhatGoesWithItem={setWhatGoesWithItem}
-			/>
 		</>
 	)
 }

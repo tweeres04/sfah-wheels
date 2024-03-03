@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import Search from './Search'
 import Browse from './Browse'
+import WhatGoesWith from './WhatGoesWith'
 
 function useDismissedAlert() {
 	const localStorageKey = 'dismissed-what-goes-with-alert'
@@ -28,6 +29,43 @@ function useDismissedAlert() {
 
 export default function SfahTable({ data }) {
 	const { dismissAlert, dismissedAlert } = useDismissedAlert()
+	const [whatGoesWithItem, setWhatGoesWithItem] = useState<string | null>(
+		null
+	)
+
+	const flatData = useMemo(
+		() =>
+			Object.keys(data).flatMap((category) =>
+				Object.keys(data[category]).flatMap((continent) =>
+					Object.keys(data[category][continent]).flatMap((country) =>
+						category === 'Acid'
+							? Object.keys(
+									data[category][continent][country]
+							  ).flatMap((type) =>
+									data[category][continent][country][
+										type
+									].flatMap((foodItem) => ({
+										category: `${type} Acid`,
+										continent,
+										country,
+										type,
+										foodItem,
+									}))
+							  )
+							: data[category][continent][country].flatMap(
+									(foodItem) => ({
+										category,
+										continent,
+										country,
+										foodItem,
+									})
+							  )
+					)
+				)
+			),
+		[data]
+	)
+
 	return (
 		<>
 			{!dismissedAlert && new Date() < new Date('2024-04-01') ? (
@@ -54,12 +92,23 @@ export default function SfahTable({ data }) {
 					<TabsTrigger value="browse">Browse</TabsTrigger>
 				</TabsList>
 				<TabsContent value="search" className="grid gap-3">
-					<Search data={data} />
+					<Search
+						flatData={flatData}
+						setWhatGoesWithItem={setWhatGoesWithItem}
+					/>
 				</TabsContent>
 				<TabsContent value="browse">
-					<Browse data={data} />
+					<Browse
+						data={data}
+						setWhatGoesWithItem={setWhatGoesWithItem}
+					/>
 				</TabsContent>
 			</Tabs>
+			<WhatGoesWith
+				foodItem={whatGoesWithItem}
+				allFoodRecords={flatData}
+				setWhatGoesWithItem={setWhatGoesWithItem}
+			/>
 		</>
 	)
 }

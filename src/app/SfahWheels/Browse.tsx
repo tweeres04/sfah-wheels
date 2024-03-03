@@ -5,6 +5,7 @@ import {
 } from '@radix-ui/react-collapsible'
 import { capitalize, sortBy } from 'lodash'
 import { Button } from '@/components/ui/button'
+import { Data } from './types'
 
 function ChevronIcon() {
 	return (
@@ -43,7 +44,12 @@ export function BrowseCollapsibleTrigger({ children, ...props }) {
 	)
 }
 
-export default function Browse({ data }) {
+type Props = {
+	data: Data
+	setWhatGoesWithItem: (foodItem: string) => void
+}
+
+export default function Browse({ data, setWhatGoesWithItem }: Props) {
 	const indentClass = 'ml-8'
 	return (
 		<div>
@@ -118,16 +124,15 @@ export default function Browse({ data }) {
 																					key={`${category}${continent}${country}${foodItem}`}
 																				>
 																					<BrowseButton
-																						asChild
-																					>
-																						<a
-																							href={`https://google.com/search?q=${foodItem}`}
-																							target="_blank"
-																						>
-																							{capitalize(
+																						onClick={() => {
+																							setWhatGoesWithItem(
 																								foodItem
-																							)}
-																						</a>
+																							)
+																						}}
+																					>
+																						{capitalize(
+																							foodItem
+																						)}
 																					</BrowseButton>
 																				</div>
 																			)
@@ -146,16 +151,15 @@ export default function Browse({ data }) {
 																		key={`${category}${continent}${country}${foodItem}`}
 																	>
 																		<BrowseButton
-																			asChild
-																		>
-																			<a
-																				href={`https://google.com/search?q=${foodItem}`}
-																				target="_blank"
-																			>
-																				{capitalize(
+																			onClick={() => {
+																				setWhatGoesWithItem(
 																					foodItem
-																				)}
-																			</a>
+																				)
+																			}}
+																		>
+																			{capitalize(
+																				foodItem
+																			)}
 																		</BrowseButton>
 																	</div>
 																)
