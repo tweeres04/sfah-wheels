@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
-import Search from './SfahWheels/Search'
-import Browse from './SfahWheels/Browse'
+import Search from './Search'
+import Browse from './Browse'
 
 function useDismissedAlert() {
 	const localStorageKey = 'dismissed-what-goes-with-alert'

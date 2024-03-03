@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import yaml from 'js-yaml'
 
-import SfahWheels from './SfahWheels'
+import SfahWheels from './SfahWheels/SfahWheels'
 import { Button } from '@/components/ui/button'
 
 export default async function Home() {
