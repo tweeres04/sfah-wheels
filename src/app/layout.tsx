@@ -12,9 +12,6 @@ const url = 'https://sfah-wheels.tweeres.ca'
 export const metadata: Metadata = {
 	title,
 	description,
-	robots: {
-		index: false,
-	},
 	alternates: {
 		canonical: url,
 	},

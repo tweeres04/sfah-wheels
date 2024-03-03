@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { sortBy, capitalize } from 'lodash'
+import { capitalize, sortBy } from 'lodash'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -16,8 +16,16 @@ import {
 	TableRow,
 } from '@/components/ui/table'
 
-export default function Search({ data }) {
+import { Data } from './types'
+import WhatGoesWith from './WhatGoesWith'
+
+type Props = {
+	data: Data
+}
+
+export default function Search({ data }: Props) {
 	const [search, setSearch] = useState('')
+	const [whatGoesWithItem, setWhatGoesWithItem] = useState(null)
 
 	const flatData = useMemo(
 		() =>
@@ -108,16 +116,13 @@ export default function Search({ data }) {
 							>
 								<TableCell>
 									<Button
-										asChild
 										className="h-auto px-2 py-0"
 										variant="ghost"
+										onClick={() => {
+											setWhatGoesWithItem(foodItem)
+										}}
 									>
-										<a
-											href={`https://google.com/search?q=${foodItem}`}
-											target="_blank"
-										>
-											{capitalize(foodItem)}{' '}
-										</a>
+										{capitalize(foodItem)}
 									</Button>
 								</TableCell>
 								<TableCell>{category}</TableCell>
@@ -127,6 +132,11 @@ export default function Search({ data }) {
 					)}
 				</TableBody>
 			</Table>
+			<WhatGoesWith
+				foodItem={whatGoesWithItem}
+				allFoodRecords={flatData}
+				setWhatGoesWithItem={setWhatGoesWithItem}
+			/>
 		</>
 	)
 }

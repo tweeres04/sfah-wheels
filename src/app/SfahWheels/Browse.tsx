@@ -23,17 +23,17 @@ function ChevronIcon() {
 	)
 }
 
-function BrowseButton(props) {
+export function BrowseButton(props) {
 	return (
 		<Button
 			{...props}
 			variant="ghost"
-			className="font-normal h-auto text-xl py-0 px-2"
+			className="font-normal h-auto text-xl py-0 px-2 text-left"
 		></Button>
 	)
 }
 
-function BrowseCollapsibleTrigger({ children, ...props }) {
+export function BrowseCollapsibleTrigger({ children, ...props }) {
 	return (
 		<CollapsibleTrigger className="flex w-100" asChild {...props}>
 			<BrowseButton>
