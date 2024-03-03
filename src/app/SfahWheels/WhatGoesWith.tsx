@@ -1,5 +1,6 @@
 'use client'
 
+import { useRef } from 'react'
 import { capitalize } from 'lodash'
 import { Button } from '@/components/ui/button'
 
@@ -14,12 +15,12 @@ import {
 } from '@/components/ui/sheet'
 
 import { FoodRecord } from './types'
-import { BrowseCollapsibleTrigger } from './Browse'
+import { BrowseCollapsibleTrigger, BrowseButton } from './Browse'
 
 type Props = {
 	foodItem: string | null
 	allFoodRecords: FoodRecord[]
-	setWhatGoesWithItem: (whatGoesWithItem: null) => void
+	setWhatGoesWithItem: (whatGoesWithItem: string | null) => void
 }
 
 export default function WhatGoesWith({
@@ -27,6 +28,7 @@ export default function WhatGoesWith({
 	allFoodRecords,
 	setWhatGoesWithItem,
 }: Props) {
+	const scrollContainerRef = useRef<HTMLDivElement>(null)
 	const indentClass = 'ml-5 sm:ml-8'
 	const capitalizedFoodItem = capitalize(foodItem ?? '')
 	const countries = Array.from(
@@ -41,7 +43,10 @@ export default function WhatGoesWith({
 	)
 	return (
 		<Sheet open={!!foodItem} onOpenChange={() => setWhatGoesWithItem(null)}>
-			<SheetContent className="overflow-y-auto space-y-3">
+			<SheetContent
+				className="overflow-y-auto space-y-3"
+				ref={scrollContainerRef}
+			>
 				<SheetHeader>
 					<SheetTitle>{capitalizedFoodItem}</SheetTitle>
 					<SheetDescription>
@@ -101,9 +106,21 @@ export default function WhatGoesWith({
 																			indentClass
 																		}
 																	>
-																		{capitalize(
-																			foodItem
-																		)}
+																		<BrowseButton
+																			onClick={() => {
+																				setWhatGoesWithItem(
+																					foodItem
+																				)
+																				scrollContainerRef.current?.scroll(
+																					0,
+																					0
+																				)
+																			}}
+																		>
+																			{capitalize(
+																				foodItem
+																			)}
+																		</BrowseButton>
 																	</li>
 																)
 															)}

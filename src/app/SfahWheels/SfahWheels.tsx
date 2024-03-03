@@ -35,7 +35,7 @@ export default function SfahTable({ data }) {
 					<AlertTitle>What goes with my ingredient?</AlertTitle>
 					<AlertDescription>
 						You can now tap an ingredient to find ideas for what
-						goes well with it
+						goes with it
 						<div className="flex flex-row-reverse gap-1">
 							<Button
 								size="sm"
