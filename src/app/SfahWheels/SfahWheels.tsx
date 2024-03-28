@@ -16,7 +16,7 @@ function useDismissedAlert() {
 	const dismissedAlertFromLocalStorage =
 		typeof window !== 'undefined'
 			? localStorage.getItem(localStorageKey)
-			: null
+			: true
 	const [dismissedAlert, setDismissedAlert] = useState(
 		dismissedAlertFromLocalStorage
 	)
