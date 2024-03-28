@@ -7,14 +7,13 @@ import { capitalize, sortBy } from 'lodash'
 import mixpanel from 'mixpanel-browser'
 import { Button } from '@/components/ui/button'
 import { Data } from './types'
-import { ChevronsUpDown } from 'lucide-react'
+import { ChevronsUpDown, Search } from 'lucide-react'
 
 export function BrowseButton({ children, ...props }) {
 	return (
 		<Button
 			variant="browse"
 			size="browse"
-			className="text-xl"
 			onClick={() => {
 				mixpanel.track('Click Browse Item', {
 					Item: children,
@@ -28,22 +27,49 @@ export function BrowseButton({ children, ...props }) {
 	)
 }
 
-export function BrowseCollapsibleTrigger({ children }) {
+type BCTProps = {
+	isCountry?: boolean
+	setGoesWithCountry?: (country: string | null) => void
+	children: string
+}
+
+export function BrowseCollapsibleTrigger({
+	isCountry = false,
+	setGoesWithCountry,
+	children,
+}: BCTProps) {
 	return (
-		<CollapsibleTrigger className="flex w-100" asChild>
+		<CollapsibleTrigger className="flex w-100 place-items-center">
 			<BrowseButton>
-				{children} <ChevronsUpDown />
+				{children} <ChevronsUpDown />{' '}
 			</BrowseButton>
+			{isCountry && setGoesWithCountry ? (
+				<Button
+					variant="browse"
+					size="browse"
+					className="p-1"
+					onClick={() => {
+						setGoesWithCountry(children)
+					}}
+				>
+					<Search className="w-4 h-4" />
+				</Button>
+			) : null}
 		</CollapsibleTrigger>
 	)
 }
 
 type Props = {
 	data: Data
-	setWhatGoesWithItem: (foodItem: string) => void
+	setWhatGoesWithItem: (foodItem: string | null) => void
+	setWhatGoesWithCountry: (country: string | null) => void
 }
 
-export default function Browse({ data, setWhatGoesWithItem }: Props) {
+export default function Browse({
+	data,
+	setWhatGoesWithItem,
+	setWhatGoesWithCountry,
+}: Props) {
 	const indentClass = 'ml-8'
 	return (
 		<div>
@@ -72,7 +98,12 @@ export default function Browse({ data, setWhatGoesWithItem }: Props) {
 												className={indentClass}
 												key={`${category}${continent}${country}`}
 											>
-												<BrowseCollapsibleTrigger>
+												<BrowseCollapsibleTrigger
+													isCountry
+													setGoesWithCountry={
+														setWhatGoesWithCountry
+													}
+												>
 													{country}
 												</BrowseCollapsibleTrigger>
 												<CollapsibleContent>

@@ -9,6 +9,7 @@ import Browse from './Browse'
 import WhatGoesWith from './WhatGoesWith'
 
 import mixpanel from 'mixpanel-browser'
+import WhatGoesWithCountry from './WhatGoesWithCountry'
 
 function useDismissedAlert() {
 	const localStorageKey = 'dismissed-what-goes-with-alert'
@@ -37,10 +38,13 @@ function useMixpanel() {
 	})
 }
 
-function useWhatGoesWithItem() {
+function useWhatGoesWith() {
 	const [whatGoesWithItem, baseSetWhatGoesWithItem] = useState<string | null>(
 		null
 	)
+	const [whatGoesWithCountry, baseSetWhatGoesWithCountry] = useState<
+		string | null
+	>(null)
 
 	function setWhatGoesWithItem(foodItem: string | null) {
 		if (foodItem) {
@@ -49,15 +53,35 @@ function useWhatGoesWithItem() {
 			})
 		}
 		baseSetWhatGoesWithItem(foodItem)
+		baseSetWhatGoesWithCountry(null)
+	}
+	function setWhatGoesWithCountry(country: string | null) {
+		if (country) {
+			mixpanel.track('Open What Goes With', {
+				Country: country,
+			})
+		}
+		baseSetWhatGoesWithCountry(country)
+		baseSetWhatGoesWithItem(null)
 	}
 
-	return { whatGoesWithItem, setWhatGoesWithItem }
+	return {
+		whatGoesWithItem,
+		setWhatGoesWithItem,
+		whatGoesWithCountry,
+		setWhatGoesWithCountry,
+	}
 }
 
 export default function SfahTable({ data }) {
 	useMixpanel()
 	const { dismissAlert, dismissedAlert } = useDismissedAlert()
-	const { setWhatGoesWithItem, whatGoesWithItem } = useWhatGoesWithItem()
+	const {
+		setWhatGoesWithItem,
+		whatGoesWithItem,
+		whatGoesWithCountry,
+		setWhatGoesWithCountry,
+	} = useWhatGoesWith()
 
 	const flatData = useMemo(
 		() =>
@@ -121,12 +145,14 @@ export default function SfahTable({ data }) {
 					<Search
 						flatData={flatData}
 						setWhatGoesWithItem={setWhatGoesWithItem}
+						setWhatGoesWithCountry={setWhatGoesWithCountry}
 					/>
 				</TabsContent>
 				<TabsContent value="browse">
 					<Browse
 						data={data}
 						setWhatGoesWithItem={setWhatGoesWithItem}
+						setWhatGoesWithCountry={setWhatGoesWithCountry}
 					/>
 				</TabsContent>
 			</Tabs>
@@ -134,6 +160,13 @@ export default function SfahTable({ data }) {
 				foodItem={whatGoesWithItem}
 				allFoodRecords={flatData}
 				setWhatGoesWithItem={setWhatGoesWithItem}
+				setWhatGoesWithCountry={setWhatGoesWithCountry}
+			/>
+			<WhatGoesWithCountry
+				country={whatGoesWithCountry}
+				allFoodRecords={flatData}
+				setWhatGoesWithItem={setWhatGoesWithItem}
+				setWhatGoesWithCountry={setWhatGoesWithCountry}
 			/>
 		</>
 	)

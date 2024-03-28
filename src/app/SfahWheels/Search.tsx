@@ -39,9 +39,14 @@ function useSearch() {
 type Props = {
 	flatData: FoodRecord[]
 	setWhatGoesWithItem: (foodItem: string | null) => void
+	setWhatGoesWithCountry: (country: string | null) => void
 }
 
-export default function Search({ flatData, setWhatGoesWithItem }: Props) {
+export default function Search({
+	flatData,
+	setWhatGoesWithItem,
+	setWhatGoesWithCountry,
+}: Props) {
 	const { search, setSearch } = useSearch()
 	const visibleData = useMemo(() => {
 		const searchTerms = search.split(' ')
@@ -123,7 +128,17 @@ export default function Search({ flatData, setWhatGoesWithItem }: Props) {
 									</Button>
 								</TableCell>
 								<TableCell>{category}</TableCell>
-								<TableCell>{country}</TableCell>
+								<TableCell>
+									<Button
+										className="h-auto px-2 py-0 text-left"
+										variant="ghost"
+										onClick={() => {
+											setWhatGoesWithCountry(country)
+										}}
+									>
+										{country}
+									</Button>
+								</TableCell>
 							</TableRow>
 						)
 					)}
