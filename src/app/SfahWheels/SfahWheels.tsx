@@ -73,7 +73,7 @@ function useWhatGoesWith() {
 	}
 }
 
-export default function SfahTable({ data }) {
+export default function SfahTable({ data, adjectivesData }) {
 	useMixpanel()
 	const { dismissAlert, dismissedAlert } = useDismissedAlert()
 	const {
@@ -163,6 +163,7 @@ export default function SfahTable({ data }) {
 				setWhatGoesWithCountry={setWhatGoesWithCountry}
 			/>
 			<WhatGoesWithCountry
+				adjectivesData={adjectivesData}
 				country={whatGoesWithCountry}
 				allFoodRecords={flatData}
 				setWhatGoesWithItem={setWhatGoesWithItem}

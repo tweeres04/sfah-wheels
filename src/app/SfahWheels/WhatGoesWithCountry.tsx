@@ -47,6 +47,7 @@ export function BrowseCollapsibleTrigger({
 }
 
 type Props = {
+	adjectivesData: Record<string, string>
 	country: string | null
 	allFoodRecords: FoodRecord[]
 	setWhatGoesWithItem: (whatGoesWithItem: string | null) => void
@@ -54,6 +55,7 @@ type Props = {
 }
 
 export default function WhatGoesWithCountry({
+	adjectivesData,
 	country,
 	allFoodRecords,
 	setWhatGoesWithItem,
@@ -85,10 +87,13 @@ export default function WhatGoesWithCountry({
 								className="p-0 h-auto"
 							>
 								<a
-									href={`https://google.com/search?q=${country} cuisine`}
+									href={`https://google.com/search?q=${encodeURIComponent(
+										adjectivesData[country]
+									)} cuisine`}
 									target="_blank"
 								>
-									Search Google for {country} cuisine
+									Search Google for {adjectivesData[country]}{' '}
+									cuisine
 									<ExternalLink className="ml-1" />
 								</a>
 							</Button>

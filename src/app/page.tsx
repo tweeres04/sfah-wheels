@@ -6,11 +6,17 @@ import SfahWheels from './SfahWheels/SfahWheels'
 import { Button } from '@/components/ui/button'
 
 export default async function Home() {
-	const fileData = await readFile(
-		join(process.cwd(), 'src', 'data.yml'),
+	const dataPromise = readFile(join(process.cwd(), 'src', 'data.yml'), 'utf8')
+	const adjectivesPromise = readFile(
+		join(process.cwd(), 'src', 'region_adjectives.yml'),
 		'utf8'
 	)
-	const data = yaml.load(fileData)
+	let [data, adjectivesData] = await Promise.all([
+		dataPromise,
+		adjectivesPromise,
+	])
+	data = yaml.load(data)
+	adjectivesData = yaml.load(adjectivesData)
 
 	return (
 		<div className="container p-2 grid gap-3">
@@ -27,7 +33,7 @@ export default async function Home() {
 				, which I highly recommend to anyone who wants to improve at
 				cooking.
 			</p>
-			<SfahWheels data={data} />
+			<SfahWheels data={data} adjectivesData={adjectivesData} />
 		</div>
 	)
 }
