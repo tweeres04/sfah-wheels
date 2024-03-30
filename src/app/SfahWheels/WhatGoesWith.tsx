@@ -114,7 +114,7 @@ export default function WhatGoesWith({
 				{goesWellWith.length > 0 ? (
 					<div>
 						<h2 className="text-lg mb-1">Commonly used with</h2>
-						<ul className="list-disc list-inside">
+						<ul className="list-disc ml-4">
 							{goesWellWith.map((gww) => (
 								<li key={gww.food}>
 									<Button
