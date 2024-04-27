@@ -8,6 +8,15 @@ import { Button } from '@/components/ui/button'
 
 import { Collapsible, CollapsibleContent } from '@radix-ui/react-collapsible'
 
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+
 import { BrowseCollapsibleTrigger } from '../../BrowseCollapsibleTrigger'
 import { FoodRecord } from '../../../types'
 
@@ -46,7 +55,26 @@ export function Food({ foodItem, allFoodRecords }: Props) {
 	).sort()
 	allFoodRecords = orderBy(allFoodRecords, 'foodItem')
 	return (
-		<div className="container mx-auto space-y-5">
+		<div className="space-y-5">
+			<Breadcrumb>
+				<BreadcrumbList>
+					<BreadcrumbItem>
+						<BreadcrumbLink asChild>
+							<Link href="/browse">Browse</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbLink asChild>
+							<Link href="/browse/foods">Foods</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbPage>{capitalizedFoodItem}</BreadcrumbPage>
+					</BreadcrumbItem>
+				</BreadcrumbList>
+			</Breadcrumb>
 			<header>
 				<h1 className="text-2xl">{capitalizedFoodItem}</h1>
 				<Button asChild variant="link" className="p-0 h-auto">

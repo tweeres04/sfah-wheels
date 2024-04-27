@@ -7,6 +7,14 @@ import { ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 import { Collapsible, CollapsibleContent } from '@radix-ui/react-collapsible'
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 
 import { BrowseCollapsibleTrigger } from '../../BrowseCollapsibleTrigger'
 import { FoodRecord } from '../../../types'
@@ -30,6 +38,25 @@ export default function Region({
 	allFoodRecords = orderBy(allFoodRecords, 'foodItem')
 	return (
 		<>
+			<Breadcrumb>
+				<BreadcrumbList>
+					<BreadcrumbItem>
+						<BreadcrumbLink asChild>
+							<Link href="/browse">Browse</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbLink asChild>
+							<Link href="/browse/regions">Regions</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbPage>{region}</BreadcrumbPage>
+					</BreadcrumbItem>
+				</BreadcrumbList>
+			</Breadcrumb>
 			<header>
 				<h1 className="text-2xl">{region}</h1>
 				<Button asChild variant="link" className="p-0 h-auto">
