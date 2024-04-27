@@ -1,7 +1,11 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import Mixpanel from './Mixpanel'
+import { Button } from '@/components/ui/button'
+import MainTabs from './MainTabs'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +29,7 @@ export const metadata: Metadata = {
 	},
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
@@ -46,7 +50,31 @@ export default function RootLayout({
 						</Script>
 					</>
 				) : null}
-				{children}
+				<div className="container mx-auto p-2 space-y-3">
+					<Link href="/" className="text-xl">
+						SFAH Wheels
+					</Link>
+					<p className="text-xs">
+						All information here is from the amazing book{' '}
+						<Button
+							asChild
+							variant="link"
+							className="p-0 h-auto text-xs"
+						>
+							<a
+								href="https://www.saltfatacidheat.com/"
+								target="_blank"
+							>
+								Salt Fat Acid Heat
+							</a>
+						</Button>
+						, which I highly recommend to anyone who wants to
+						improve at cooking.
+					</p>
+					<MainTabs />
+					{children}
+				</div>
+				<Mixpanel />
 			</body>
 		</html>
 	)
