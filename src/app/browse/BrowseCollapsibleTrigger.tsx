@@ -16,17 +16,24 @@ export function BrowseCollapsibleTrigger({
 	children,
 }: BCTProps) {
 	return (
-		<CollapsibleTrigger className="flex w-100 place-items-center">
-			<Button variant="browse" size="browse">
-				{children} <ChevronsUpDown />{' '}
-			</Button>
+		<div className="flex w-100 place-items-center">
+			<CollapsibleTrigger asChild>
+				<Button variant="browse" size="browse">
+					{children} <ChevronsUpDown />{' '}
+				</Button>
+			</CollapsibleTrigger>
 			{isCountry ? (
-				<Link href={`/browse/regions/${children}`}>
-					<Button variant="browse" size="browse" className="p-1">
-						<Search className="w-4 h-4" />
-					</Button>
-				</Link>
+				<Button
+					variant="browse"
+					size="browse"
+					className="px-1 h-6 w-6"
+					asChild
+				>
+					<Link href={`/browse/regions/${children}`}>
+						<Search />
+					</Link>
+				</Button>
 			) : null}
-		</CollapsibleTrigger>
+		</div>
 	)
 }
