@@ -1,8 +1,10 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { capitalize, sortBy, debounce } from 'lodash'
+import { capitalize, sortBy, debounce, initial } from 'lodash'
+import { useRouter } from 'next/navigation'
 import mixpanel from 'mixpanel-browser'
+import Link from 'next/link'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -25,12 +27,30 @@ const logSearchToMixpanel = debounce((query) => {
 	})
 }, 1000)
 
-function useSearch() {
-	const [search, baseSetSearch] = useState('')
+function useSearch(initialSearchParams: Record<string, string>) {
+	const router = useRouter()
+	const [search, baseSetSearch] = useState(() => {
+		const searchParams = new URLSearchParams(initialSearchParams)
+		const searchQuery = searchParams.get('q')
+
+		return searchQuery ?? ''
+	})
 
 	function setSearch(newValue: string) {
 		logSearchToMixpanel(newValue)
 		baseSetSearch(newValue)
+
+		const searchParams = new URLSearchParams(window.location.search)
+		if (newValue !== '') {
+			searchParams.set('q', newValue)
+		} else {
+			searchParams.delete('q')
+		}
+
+		const newUrl = new URL(window.location.href)
+		newUrl.search = searchParams.toString()
+
+		router.replace(newUrl.href)
 	}
 
 	return { search, setSearch }
@@ -38,16 +58,11 @@ function useSearch() {
 
 type Props = {
 	flatData: FoodRecord[]
-	setWhatGoesWithItem: (foodItem: string | null) => void
-	setWhatGoesWithCountry: (country: string | null) => void
+	initialSearchParams: Record<string, string>
 }
 
-export default function Search({
-	flatData,
-	setWhatGoesWithItem,
-	setWhatGoesWithCountry,
-}: Props) {
-	const { search, setSearch } = useSearch()
+export default function Search({ flatData, initialSearchParams }: Props) {
+	const { search, setSearch } = useSearch(initialSearchParams)
 	const visibleData = useMemo(() => {
 		const searchTerms = search.split(' ')
 		return flatData.filter(({ category, continent, country, foodItem }) =>
@@ -117,27 +132,25 @@ export default function Search({
 								key={`${category}${continent}${country}${foodItem}`}
 							>
 								<TableCell>
-									<Button
-										className="h-auto px-2 py-0 text-left"
-										variant="ghost"
-										onClick={() => {
-											setWhatGoesWithItem(foodItem)
-										}}
-									>
-										{capitalize(foodItem)}
-									</Button>
+									<Link href={`/browse/foods/${foodItem}`}>
+										<Button
+											className="h-auto px-2 py-0 text-left"
+											variant="ghost"
+										>
+											{capitalize(foodItem)}
+										</Button>
+									</Link>
 								</TableCell>
 								<TableCell>{category}</TableCell>
 								<TableCell>
-									<Button
-										className="h-auto px-2 py-0 text-left"
-										variant="ghost"
-										onClick={() => {
-											setWhatGoesWithCountry(country)
-										}}
-									>
-										{country}
-									</Button>
+									<Link href={`/browse/regions/${country}`}>
+										<Button
+											className="h-auto px-2 py-0 text-left"
+											variant="ghost"
+										>
+											{country}
+										</Button>
+									</Link>
 								</TableCell>
 							</TableRow>
 						)
