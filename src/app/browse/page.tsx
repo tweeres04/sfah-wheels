@@ -5,7 +5,7 @@ import yaml from 'js-yaml'
 import Browse from './Browse'
 import { Metadata } from 'next'
 
-const title = 'Browse - SFAH Wheels'
+const title = 'Browse by category - SFAH Wheels'
 const description =
 	'Browse by category and region to find ingredients that go well together'
 const url = 'https://sfah-wheels.tweeres.ca/browse'
