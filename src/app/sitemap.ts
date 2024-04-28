@@ -2,15 +2,20 @@ import { MetadataRoute } from 'next'
 
 import { generateStaticParams as gspFoods } from './browse/foods/[food]/page'
 import { generateStaticParams as gspRegions } from './browse/regions/[region]/page'
+import { escape } from 'html-escaper'
 
-const urlFromPath = (path: string) => `https://sfah-wheels.tweeres.ca${path}`
+function urlFromPath(path: string) {
+	path = escape(path)
+	path = encodeURI(path)
+	return `https://sfah-wheels.tweeres.ca${path}`
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const foodSitemapItems = (await gspFoods()).map(({ food }) => ({
-		url: urlFromPath(`/browse/foods/${encodeURIComponent(food)}`),
+		url: urlFromPath(`/browse/foods/${food}`),
 	}))
 	const regionSitemapItems = (await gspRegions()).map(({ region }) => ({
-		url: urlFromPath(`/browse/regions/${encodeURIComponent(region)}`),
+		url: urlFromPath(`/browse/regions/${region}`),
 	}))
 
 	return [
