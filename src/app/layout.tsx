@@ -52,6 +52,28 @@ export default async function RootLayout({
 					</p>
 					<MainTabs />
 					{children}
+					<footer className="text-center py-32 text-sm">
+						<p>
+							By{' '}
+							<a
+								href="https://tweeres.ca"
+								title="Tyler Weeres"
+								className="text-blue-600"
+							>
+								Tyler Weeres
+							</a>
+						</p>
+						<p>
+							Boiling icons created by{' '}
+							<a
+								href="https://www.flaticon.com/free-icons/boiling"
+								title="boiling icons"
+								className="text-blue-600"
+							>
+								Freepik - Flaticon
+							</a>
+						</p>
+					</footer>
 				</div>
 				<Mixpanel />
 			</body>
