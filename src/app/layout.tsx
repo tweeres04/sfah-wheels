@@ -1,5 +1,4 @@
 import './globals.css'
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
@@ -8,26 +7,6 @@ import { Button } from '@/components/ui/button'
 import MainTabs from './MainTabs'
 
 const inter = Inter({ subsets: ['latin'] })
-
-const title = 'SFAH Wheels'
-const description = 'Digitized wheels from Salt Fat Acid Heat'
-const url = 'https://sfah-wheels.tweeres.ca'
-
-export const metadata: Metadata = {
-	title,
-	description,
-	alternates: {
-		canonical: url,
-	},
-	openGraph: {
-		title,
-		description,
-		url,
-		siteName: title,
-		locale: 'en_US',
-		type: 'website',
-	},
-}
 
 export default async function RootLayout({
 	children,

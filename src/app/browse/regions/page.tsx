@@ -4,6 +4,27 @@ import yaml from 'js-yaml'
 import { flatData } from '@/app/flatData'
 import Link from 'next/link'
 import { orderBy } from 'lodash'
+import { Metadata } from 'next'
+
+const title = 'Browse by region - SFAH Wheels'
+const description = 'Find ingredients that are used in a region'
+const url = 'https://sfah-wheels.tweeres.ca/browse/regions'
+
+export const metadata: Metadata = {
+	title,
+	description,
+	alternates: {
+		canonical: url,
+	},
+	openGraph: {
+		title,
+		description,
+		url,
+		siteName: title,
+		locale: 'en_US',
+		type: 'website',
+	},
+}
 
 export default async function Regions() {
 	const fileData = await readFile(

@@ -4,6 +4,35 @@ import { join } from 'path'
 import yaml from 'js-yaml'
 import { flatData } from '../../../flatData'
 import RegionComponent from './Region'
+import { Metadata } from 'next'
+
+type GmProps = {
+	params: {
+		region: string
+	}
+}
+
+export function generateMetaData({ params: { region } }: GmProps): Metadata {
+	const title = `${region} - SFAH Wheels`
+	const description = `Find ingredients that are used in ${region}`
+	const url = `https://sfah-wheels.tweeres.ca/browse/regions/${region}`
+
+	return {
+		title,
+		description,
+		alternates: {
+			canonical: url,
+		},
+		openGraph: {
+			title,
+			description,
+			url,
+			siteName: title,
+			locale: 'en_US',
+			type: 'website',
+		},
+	}
+}
 
 export async function generateStaticParams() {
 	const fileData = await readFile(
