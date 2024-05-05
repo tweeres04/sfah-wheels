@@ -18,7 +18,7 @@ export function generateMetadata({ params: { food } }: GmProps): Metadata {
 	const capitalizedFood = capitalize(decodedFood)
 	const title = `${capitalizedFood} - SFAH Wheels`
 	const description = `Find ingredients that go with ${decodedFood}`
-	const url = `https://sfah-wheels.tweeres.ca/browse/foods/${food}`
+	const url = `https://sfah-wheels.tweeres.ca/browse/foods/${decodedFood}`
 
 	return {
 		title,
