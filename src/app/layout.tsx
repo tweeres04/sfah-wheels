@@ -64,10 +64,10 @@ export default async function RootLayout({
 							</a>
 						</p>
 						<p>
-							Boiling icons created by{' '}
+							Pot icon created by{' '}
 							<a
 								href="https://www.flaticon.com/free-icons/boiling"
-								title="boiling icons"
+								title="Pot icon"
 								className="text-blue-600"
 							>
 								Freepik - Flaticon
