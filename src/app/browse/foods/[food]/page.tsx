@@ -16,9 +16,9 @@ type GmProps = {
 export function generateMetadata({ params: { food } }: GmProps): Metadata {
 	const decodedFood = decodeURIComponent(food)
 	const capitalizedFood = capitalize(decodedFood)
-	const title = `${capitalizedFood} - SFAH Wheels`
+	const title = `${capitalizedFood} - What Goes With`
 	const description = `Find ingredients that go with ${decodedFood}`
-	const url = `https://sfah-wheels.tweeres.ca/browse/foods/${decodedFood}`
+	const url = `https://whatgoeswith.tweeres.com/browse/foods/${decodedFood}`
 
 	return {
 		title,
