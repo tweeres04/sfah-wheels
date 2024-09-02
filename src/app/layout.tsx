@@ -31,7 +31,7 @@ export default async function RootLayout({
 				) : null}
 				<div className="container mx-auto p-2 space-y-3">
 					<Link href="/" className="text-xl">
-						SFAH Wheels
+						What Goes With
 					</Link>
 					<p className="text-xs">
 						All information here is from the amazing book{' '}

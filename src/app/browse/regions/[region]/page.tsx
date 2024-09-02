@@ -14,9 +14,9 @@ type GmProps = {
 
 export function generateMetadata({ params: { region } }: GmProps): Metadata {
 	const decodedRegion = decodeURIComponent(region)
-	const title = `${decodedRegion} - SFAH Wheels`
+	const title = `${decodedRegion} - What Goes With`
 	const description = `Find ingredients that are used in ${decodedRegion}`
-	const url = `https://sfah-wheels.tweeres.ca/browse/regions/${decodedRegion}`
+	const url = `https://whatgoeswith.tweeres.com/browse/regions/${decodedRegion}`
 
 	return {
 		title,

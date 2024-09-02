@@ -3,8 +3,8 @@ import icon from './icon.png'
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
-		name: 'SFAH Wheels',
-		short_name: 'SFAH Wheels',
+		name: 'What Goes With',
+		short_name: 'What Goes With',
 		description: 'Learn what ingredients go together',
 		start_url: '/',
 		display: 'standalone',

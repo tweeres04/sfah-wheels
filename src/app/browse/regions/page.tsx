@@ -6,9 +6,9 @@ import Link from 'next/link'
 import { orderBy } from 'lodash'
 import { Metadata } from 'next'
 
-const title = 'Browse by region - SFAH Wheels'
+const title = 'Browse by region - What Goes With'
 const description = 'Find ingredients that are used in a region'
-const url = 'https://sfah-wheels.tweeres.ca/browse/regions'
+const url = 'https://whatgoeswith.tweeres.com/browse/regions'
 
 export const metadata: Metadata = {
 	title,

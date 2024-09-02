@@ -6,10 +6,10 @@ import SearchComponent from './Search'
 import { flatData } from './flatData'
 import { Metadata } from 'next'
 
-const title = 'Search - SFAH Wheels'
+const title = 'Search - What Goes With'
 const description =
 	'Search a category, region, or ingredient to find the right ingredient for your dish'
-const url = 'https://sfah-wheels.tweeres.ca'
+const url = 'https://whatgoeswith.tweeres.com'
 
 export const metadata: Metadata = {
 	title,
