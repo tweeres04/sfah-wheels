@@ -50,6 +50,11 @@ export async function generateMetadata({
 			siteName: 'What Goes With',
 			locale: 'en_US',
 			type: 'website',
+			images: [
+				{
+					url: 'https://whatgoeswith.tweeres.com/og-food.png',
+				},
+			],
 		},
 	}
 }
