@@ -24,6 +24,11 @@ export const metadata: Metadata = {
 		siteName: 'What Goes With',
 		locale: 'en_US',
 		type: 'website',
+		images: [
+			{
+				url: 'https://whatgoeswith.tweeres.com/og-search.png',
+			},
+		],
 	},
 }
 
