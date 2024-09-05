@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { capitalize, orderBy, countBy, toPairs } from 'lodash'
+import { capitalize, orderBy, countBy, toPairs, kebabCase } from 'lodash'
 import { ExternalLink } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -93,7 +93,11 @@ export function Food({ foodItem, allFoodRecords }: Props) {
 					<ul className="list-disc ml-4">
 						{goesWellWith.map((gww) => (
 							<li key={gww.food}>
-								<Link href={`/browse/foods/${gww.food}`}>
+								<Link
+									href={`/browse/foods/${kebabCase(
+										gww.food
+									)}`}
+								>
 									<Button variant="browse" size="browse">
 										{capitalize(gww.food)} ({gww.count}{' '}
 										regions)
@@ -148,7 +152,9 @@ export function Food({ foodItem, allFoodRecords }: Props) {
 																		}
 																	>
 																		<Link
-																			href={`/browse/foods/${foodItem}`}
+																			href={`/browse/foods/${kebabCase(
+																				foodItem
+																			)}`}
 																		>
 																			<Button
 																				variant="browse"

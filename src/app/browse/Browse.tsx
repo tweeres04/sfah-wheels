@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Collapsible, CollapsibleContent } from '@radix-ui/react-collapsible'
-import { capitalize, sortBy } from 'lodash'
+import { capitalize, sortBy, kebabCase } from 'lodash'
 import { Data } from '../types'
 import { Button } from '@/components/ui/button'
 import { BrowseCollapsibleTrigger } from './BrowseCollapsibleTrigger'
@@ -88,7 +88,9 @@ export default function Browse({ data }: Props) {
 																					key={`${category}${continent}${country}${foodItem}`}
 																				>
 																					<Link
-																						href={`/browse/foods/${foodItem}`}
+																						href={`/browse/foods/${kebabCase(
+																							foodItem
+																						)}`}
 																					>
 																						<Button
 																							variant="browse"
@@ -116,7 +118,9 @@ export default function Browse({ data }: Props) {
 																		key={`${category}${continent}${country}${foodItem}`}
 																	>
 																		<Link
-																			href={`/browse/foods/${foodItem}`}
+																			href={`/browse/foods/${kebabCase(
+																				foodItem
+																			)}`}
 																		>
 																			<Button
 																				variant="browse"

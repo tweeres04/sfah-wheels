@@ -5,6 +5,7 @@ import yaml from 'js-yaml'
 import { flatData } from '../../../flatData'
 import RegionComponent from './Region'
 import { Metadata } from 'next'
+import { kebabCase } from 'lodash'
 
 type GmProps = {
 	params: {
@@ -12,11 +13,27 @@ type GmProps = {
 	}
 }
 
-export function generateMetadata({ params: { region } }: GmProps): Metadata {
-	const decodedRegion = decodeURIComponent(region)
-	const title = `${decodedRegion} - What Goes With`
-	const description = `Find ingredients that are used in ${decodedRegion}`
-	const url = `https://whatgoeswith.tweeres.com/browse/regions/${decodedRegion}`
+export async function generateMetadata({
+	params: { region },
+}: GmProps): Metadata {
+	const fileData = await readFile(
+		join(process.cwd(), 'src', 'data.yml'),
+		'utf8'
+	)
+	const data = yaml.load(fileData)
+	const flatData_ = flatData(data)
+
+	const foodData = flatData_.find((d) => kebabCase(d.country) === region)
+
+	if (!foodData) {
+		notFound()
+	}
+
+	const humanRegion = foodData.country
+
+	const title = `${humanRegion} - What Goes With`
+	const description = `Find ingredients that are used in ${humanRegion}`
+	const url = `https://whatgoeswith.tweeres.com/browse/regions/${region}`
 
 	return {
 		title,
@@ -28,7 +45,7 @@ export function generateMetadata({ params: { region } }: GmProps): Metadata {
 			title,
 			description,
 			url,
-			siteName: title,
+			siteName: 'What Goes With',
 			locale: 'en_US',
 			type: 'website',
 		},
@@ -44,7 +61,9 @@ export async function generateStaticParams() {
 
 	const flatData_ = flatData(data)
 
-	const uniqueRegions = Array.from(new Set(flatData_.map((fd) => fd.country)))
+	const uniqueRegions = Array.from(
+		new Set(flatData_.map((fd) => kebabCase(fd.country)))
+	)
 
 	return uniqueRegions.map((ur) => ({ region: ur }))
 }
@@ -69,9 +88,7 @@ export default async function Region({ params: { region } }: Props) {
 	adjectivesData = yaml.load(adjectivesData)
 	const flatData_ = flatData(data)
 
-	region = decodeURIComponent(region)
-
-	const foodData = flatData_.find((d) => d.country === region)
+	const foodData = flatData_.find((d) => kebabCase(d.country) === region)
 
 	if (!foodData) {
 		notFound()
@@ -81,7 +98,7 @@ export default async function Region({ params: { region } }: Props) {
 		<RegionComponent
 			allFoodRecords={flatData_}
 			adjectivesData={adjectivesData}
-			region={region}
+			region={foodData.country}
 		/>
 	)
 }

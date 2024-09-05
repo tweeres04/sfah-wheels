@@ -3,7 +3,7 @@ import { join } from 'path'
 import yaml from 'js-yaml'
 import { flatData } from '@/app/flatData'
 import Link from 'next/link'
-import { capitalize, orderBy } from 'lodash'
+import { capitalize, orderBy, kebabCase } from 'lodash'
 import { Metadata } from 'next'
 
 const title = 'Browse by food - What Goes With'
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		title,
 		description,
 		url,
-		siteName: title,
+		siteName: 'What Goes With',
 		locale: 'en_US',
 		type: 'website',
 	},
@@ -44,7 +44,9 @@ export default async function Foods() {
 		<ul className="grid sm:grid-cols-2 lg:grid-cols-3">
 			{allFoodsSorted.map((f) => (
 				<li key={f}>
-					<Link href={`/browse/foods/${f}`}>{capitalize(f)}</Link>
+					<Link href={`/browse/foods/${kebabCase(f)}`}>
+						{capitalize(f)}
+					</Link>
 				</li>
 			))}
 		</ul>

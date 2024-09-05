@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { capitalize, orderBy } from 'lodash'
+import { capitalize, orderBy, kebabCase } from 'lodash'
 import { ExternalLink } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -98,7 +98,9 @@ export default function Region({
 														className={indentClass}
 													>
 														<Link
-															href={`/browse/foods/${foodItem}`}
+															href={`/browse/foods/${kebabCase(
+																foodItem
+															)}`}
 														>
 															<Button
 																variant="browse"

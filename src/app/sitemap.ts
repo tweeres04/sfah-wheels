@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { kebabCase } from 'lodash'
 
 import { generateStaticParams as gspFoods } from './browse/foods/[food]/page'
 import { generateStaticParams as gspRegions } from './browse/regions/[region]/page'
@@ -12,10 +13,10 @@ function urlFromPath(path: string) {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const foodSitemapItems = (await gspFoods()).map(({ food }) => ({
-		url: urlFromPath(`/browse/foods/${food}`),
+		url: urlFromPath(`/browse/foods/${kebabCase(food)}`),
 	}))
 	const regionSitemapItems = (await gspRegions()).map(({ region }) => ({
-		url: urlFromPath(`/browse/regions/${region}`),
+		url: urlFromPath(`/browse/regions/${kebabCase(region)}`),
 	}))
 
 	return [

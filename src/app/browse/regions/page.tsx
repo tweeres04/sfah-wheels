@@ -3,7 +3,7 @@ import { join } from 'path'
 import yaml from 'js-yaml'
 import { flatData } from '@/app/flatData'
 import Link from 'next/link'
-import { orderBy } from 'lodash'
+import { orderBy, kebabCase } from 'lodash'
 import { Metadata } from 'next'
 
 const title = 'Browse by region - What Goes With'
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 		title,
 		description,
 		url,
-		siteName: title,
+		siteName: 'What Goes With',
 		locale: 'en_US',
 		type: 'website',
 	},
@@ -43,7 +43,7 @@ export default async function Regions() {
 		<ul className="grid sm:grid-cols-2 lg:grid-cols-3">
 			{allRegionsSorted.map((r) => (
 				<li key={r}>
-					<Link href={`/browse/regions/${r}`}>{r}</Link>
+					<Link href={`/browse/regions/${kebabCase(r)}`}>{r}</Link>
 				</li>
 			))}
 		</ul>

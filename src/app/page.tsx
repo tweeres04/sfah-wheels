@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		title,
 		description,
 		url,
-		siteName: title,
+		siteName: 'What Goes With',
 		locale: 'en_US',
 		type: 'website',
 	},

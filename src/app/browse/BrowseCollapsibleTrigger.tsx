@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import { Button } from '@/components/ui/button'
 import { ChevronsUpDown, Search } from 'lucide-react'
+import { kebabCase } from 'lodash'
 
 type BCTProps = {
 	isCountry?: boolean
@@ -29,7 +30,7 @@ export function BrowseCollapsibleTrigger({
 					className="px-1 h-6 w-6"
 					asChild
 				>
-					<Link href={`/browse/regions/${children}`}>
+					<Link href={`/browse/regions/${kebabCase(children)}`}>
 						<Search />
 					</Link>
 				</Button>

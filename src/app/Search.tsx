@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { capitalize, sortBy, debounce, initial } from 'lodash'
+import { capitalize, sortBy, debounce, kebabCase } from 'lodash'
 import { useRouter } from 'next/navigation'
 import mixpanel from 'mixpanel-browser'
 import Link from 'next/link'
@@ -132,7 +132,11 @@ export default function Search({ flatData, initialSearchParams }: Props) {
 								key={`${category}${continent}${country}${foodItem}`}
 							>
 								<TableCell>
-									<Link href={`/browse/foods/${foodItem}`}>
+									<Link
+										href={`/browse/foods/${kebabCase(
+											foodItem
+										)}`}
+									>
 										<Button
 											className="h-auto px-2 py-0 text-left"
 											variant="ghost"
@@ -143,7 +147,11 @@ export default function Search({ flatData, initialSearchParams }: Props) {
 								</TableCell>
 								<TableCell>{category}</TableCell>
 								<TableCell>
-									<Link href={`/browse/regions/${country}`}>
+									<Link
+										href={`/browse/regions/${kebabCase(
+											country
+										)}`}
+									>
 										<Button
 											className="h-auto px-2 py-0 text-left"
 											variant="ghost"
