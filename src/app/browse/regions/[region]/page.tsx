@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 import yaml from 'js-yaml'
@@ -26,6 +26,14 @@ export async function generateMetadata({
 	const foodData = flatData_.find((d) => kebabCase(d.country) === region)
 
 	if (!foodData) {
+		const foodData = flatData_.find(
+			(d) => d.country === decodeURIComponent(region)
+		)
+
+		if (foodData) {
+			redirect(`/browse/regions/${kebabCase(foodData.country)}`)
+		}
+
 		notFound()
 	}
 
