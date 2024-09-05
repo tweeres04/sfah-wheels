@@ -34,7 +34,7 @@ export async function generateMetadata({
 
 	const capitalizedFood = capitalize(humanFood)
 	const title = `${capitalizedFood} - What Goes With`
-	const description = `Find ingredients that go with ${humanFood}`
+	const description = `Find ingredients that go with ${humanFood}. Learn what cuisines ${humanFood} is used in.`
 	const url = `https://whatgoeswith.tweeres.com/browse/foods/${food}`
 
 	return {
