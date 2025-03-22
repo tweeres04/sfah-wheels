@@ -78,6 +78,12 @@ export default async function RootLayout({
 				</div>
 				<FeedbackForm />
 				<Mixpanel />
+				{/* Ahrefs analytics */}
+				<script
+					src="https://analytics.ahrefs.com/analytics.js"
+					data-key="OR25pSoDpycSw5Y6N2q99Q"
+					async
+				></script>
 			</body>
 		</html>
 	)
