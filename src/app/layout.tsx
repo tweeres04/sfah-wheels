@@ -5,7 +5,6 @@ import Script from 'next/script'
 import Mixpanel from './Mixpanel'
 import { Button } from '@/components/ui/button'
 import MainTabs from './MainTabs'
-import FeedbackForm from './FeedbackForm'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -76,7 +75,6 @@ export default async function RootLayout({
 						</p>
 					</footer>
 				</div>
-				<FeedbackForm />
 				<Mixpanel />
 				{/* Ahrefs analytics */}
 				<script
@@ -84,6 +82,19 @@ export default async function RootLayout({
 					data-key="OR25pSoDpycSw5Y6N2q99Q"
 					async
 				></script>
+				<Script src="https://tally.so/widgets/embed.js"></Script>
+				<Script id="tally_config">
+					{`window.TallyConfig = {
+						"formId": "mJyLD4",
+						"popup": {
+							"emoji": {
+								"text": "👋",
+								"animation": "wave"
+							},
+							"hideTitle": true,
+						},
+					};`}
+				</Script>
 			</body>
 		</html>
 	)
