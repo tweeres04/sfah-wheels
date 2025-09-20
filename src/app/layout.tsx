@@ -95,6 +95,10 @@ export default async function RootLayout({
 						},
 					};`}
 				</Script>
+				<Script
+					id="simple_analytics"
+					src="https://scripts.simpleanalyticscdn.com/latest.js"
+				></Script>
 			</body>
 		</html>
 	)
